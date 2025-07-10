@@ -1,0 +1,40 @@
+{
+  "name": "tf-target",
+  "displayName": "Terraform Target Helper",
+  "description": "Quickly copy Terraform resource target IDs from the editor context menu.",
+  "version": "0.0.1",
+  "publisher": "Johnzell",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onLanguage:terraform"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "tf-target.copyTarget",
+        "title": "Copy Terraform Target"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "tf-target.copyTarget",
+          "when": "resourceLangId == terraform"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.3.3"
+  }
+}
